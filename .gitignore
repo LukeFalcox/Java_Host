@@ -8,7 +8,7 @@ node_modules/
 # Diretórios de build/output
 dist/
 build/
-
+Initial
 # Arquivos de sistema/macOS/Windows
 .DS_Store
 Thumbs.db
