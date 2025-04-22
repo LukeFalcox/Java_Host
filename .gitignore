@@ -1,0 +1,29 @@
+# Logs
+*.log
+npm-debug.log*
+
+# Diretórios de dependências
+node_modules/
+
+# Diretórios de build/output
+dist/
+build/
+
+# Arquivos de sistema/macOS/Windows
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDEs
+*.suo
+*.user
+*.idea/
+.vscode/
+
+# Arquivos de ambiente
+.env
+
+# Chaves e credenciais
+ChavesAWS/
+
+# Exceção: mantenha este placeholder para pastas vazias
+!.gitkeep

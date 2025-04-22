@@ -1,0 +1,12 @@
+com\devfalco\pagpy\controller\UserController.class
+com\devfalco\pagpy\model\UserModel.class
+com\devfalco\pagpy\service\UserService.class
+com\devfalco\pagpy\model\TransferDTO.class
+com\devfalco\pagpy\service\LojistaService.class
+com\devfalco\pagpy\PagpyApplication.class
+com\devfalco\pagpy\model\LojistaRequestDTO.class
+com\devfalco\pagpy\model\UserRequestDTO.class
+com\devfalco\pagpy\model\LojistaModel.class
+com\devfalco\pagpy\repository\LojistaRepository.class
+com\devfalco\pagpy\controller\LojistaController.class
+com\devfalco\pagpy\repository\UserRepository.class
