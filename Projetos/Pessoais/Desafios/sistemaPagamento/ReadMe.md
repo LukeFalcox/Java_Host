@@ -25,6 +25,16 @@ Promoções do dia
 
 Após o pagamento, uma notificação é enviada por e-mail, SMS ou WhatsApp.
 
+### 🎯 Regras de Desconto
+Você pode aplicar as regras de forma cumulativa com o padrão Decorator. Aqui estão três regras e seus percentuais:
+
+Regra	Condição	Desconto (%)
+Cliente VIP	Cliente possui flag vip = true	5%
+Valor Alto	Pedido com valor total > R$ 500	10%
+Promoção do Dia	Hoje é um dia promocional (ex: sábado)	7%
+
+Exemplo: um cliente VIP faz um pedido de R$600 em um sábado → 5% + 10% + 7% = 22% de desconto.
+
 ### 🛠️ Design Patterns sugeridos
 Strategy: para as formas de pagamento.
 
