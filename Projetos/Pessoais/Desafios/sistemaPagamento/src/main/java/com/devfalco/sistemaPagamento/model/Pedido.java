@@ -27,7 +27,8 @@ public class Pedido {
 UUID id;
 String nomecliente;
 String cpf;
-String valorTotal;  
+String valorTotal; 
+StatusPedido status; 
 @OneToMany(cascade = CascadeType.ALL)
 List<Produto> produtos;
 }

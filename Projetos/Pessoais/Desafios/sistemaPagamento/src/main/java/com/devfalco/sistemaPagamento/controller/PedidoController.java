@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devfalco.sistemaPagamento.model.PedidoDto;
 import com.devfalco.sistemaPagamento.notificacao.Notificacao;
+import com.devfalco.sistemaPagamento.pagamento.Pagamento;
+import com.devfalco.sistemaPagamento.pagamento.PagamentoDto;
 import com.devfalco.sistemaPagamento.service.PedidoService;
 
 @RestController
@@ -21,6 +23,11 @@ public class PedidoController {
 
   @PostMapping
   ResponseEntity<Notificacao> gerarPedido(@RequestBody PedidoDto dto){
-    pedidoService.gerarPedido(dto);
+   return ResponseEntity.ok(pedidoService.gerarPedido(dto));
+  }
+
+  ResponseEntity<Pagamento> pagar(@RequestBody PagamentoDto dto){
+      Pagamento pagamento = pedidoService.procesarPagamento(dto);
+      return ResponseEntity.ok(pagamento);
   }
 }

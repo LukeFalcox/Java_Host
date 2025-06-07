@@ -1,8 +1,13 @@
 package com.devfalco.sistemaPagamento.pagamento;
 
-import com.devfalco.sistemaPagamento.model.Pedido;
-import com.devfalco.sistemaPagamento.model.PedidoDto;
 
-public interface PagamentoFactory {
-  String pagar(PedidoDto pedido);
+public class PagamentoFactory {
+  public  IPagamento getPagamento(String metodo){
+    return switch (metodo.toLowerCase()) {
+      case "cartao" -> new PagamentoCartao();
+      case "pix" -> new PagamentoPix();
+      default -> throw new IllegalArgumentException("Método Invalido");
+    };
+  }
+  
 } 

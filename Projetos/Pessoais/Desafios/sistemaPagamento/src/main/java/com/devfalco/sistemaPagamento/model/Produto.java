@@ -22,9 +22,13 @@ import lombok.Setter;
 public class Produto {
   @GeneratedValue
   @Id
-UUID id;
-String nomeproduto;
-Integer quantidade;
-String valor;
-UUID pedidoId;
+  UUID id;
+  String nomeproduto;
+  Integer quantidade;
+  String valor;
+  public Produto(String nomeproduto, Integer quantidade, String valor){
+    this.nomeproduto = nomeproduto;
+    this.quantidade = quantidade;
+    this.valor = valor;
+  }
 }

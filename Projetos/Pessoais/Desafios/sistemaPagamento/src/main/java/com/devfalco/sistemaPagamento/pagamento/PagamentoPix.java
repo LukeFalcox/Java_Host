@@ -3,14 +3,14 @@ package com.devfalco.sistemaPagamento.pagamento;
 import com.devfalco.sistemaPagamento.model.Pedido;
 import com.devfalco.sistemaPagamento.model.PedidoDto;
 
-public class PagamentoPix implements PagamentoFactory {
+public class PagamentoPix implements IPagamento {
 
   @Override
-  public String pagar(PedidoDto pedido) {
-    return "Ok";  
+  public Pagamento pagar(PedidoDto pedido) {
+    return ;  
   }
 
-  // acredito que deva retornar uma notificação
+
 
 
 
