@@ -14,10 +14,30 @@ public class StudentService {
   public Student createStudent(StudentDTO data){
     Student newstudent = new Student();
     newstudent.setEmail(data.email());
-    newstudent.setPassword(data.password());
+    if (data.confirmPassword() == data.password()) {
+      newstudent.setPassword(data.password());
+    } else {
+      return null;
+    }
     newstudent.setUsername(data.username());
-    
     studentRepository.save(newstudent);
     return newstudent;
+  }
+
+  public Student login(StudentDTO data){
+    Student student = studentRepository.findByEmail(data.email());
+   boolean verification = verification(student,data);
+   if(verification == true){
+    return student;
+   } else {
+    return null;
+   }
+  }
+
+  boolean verification(Student student,  StudentDTO data){
+    if(student.getEmail() == data.email() && student.getPassword() == data.password()){
+        return true;
+    }
+    return false;
   }
 }

@@ -1,8 +1,6 @@
 package com.devfalco.RespostNow.controller;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +22,15 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<Student> createUser(@RequestBody StudentDTO dStudentDTO){
-        Student student = studentService.createStudent(dStudentDTO);
-        return new ResponseEntity<>(student, HttpStatus.CREATED);
+        Student newstudent = studentService.createStudent(dStudentDTO);
+        return ResponseEntity.ok(newstudent);
         
+    }
+
+    @PostMapping
+    public ResponseEntity<Student> login(@RequestBody StudentDTO dStudentDTO){
+      Student newstudent = studentService.login(dStudentDTO);
+      return ResponseEntity.ok(newstudent);
     }
   
 }

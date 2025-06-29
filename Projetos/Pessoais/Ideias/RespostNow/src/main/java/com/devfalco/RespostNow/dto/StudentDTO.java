@@ -1,4 +1,6 @@
 package com.devfalco.RespostNow.dto;
 
-public record StudentDTO(String email, String username,String password) {
+import com.devfalco.RespostNow.model.STATUS;
+
+public record StudentDTO(String email, String username,String password, String confirmPassword, STATUS status) {
 }

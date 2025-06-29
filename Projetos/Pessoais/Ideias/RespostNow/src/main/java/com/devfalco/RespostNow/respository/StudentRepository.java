@@ -6,5 +6,5 @@ import com.devfalco.RespostNow.model.Student;
 
 public interface StudentRepository extends JpaRepository<Student,Integer>{
 
-  
+ public Student findByEmail(String email);
 }
