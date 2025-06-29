@@ -13,6 +13,7 @@ import lombok.Setter;
 @Table(name="questions")
 
 public class Questions {
+  
   Integer id;
   String title; 
   String answer;
