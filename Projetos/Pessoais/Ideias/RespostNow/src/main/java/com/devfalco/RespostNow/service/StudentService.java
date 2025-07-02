@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.devfalco.RespostNow.dto.StudentDTO;
+import com.devfalco.RespostNow.model.STATUS;
 import com.devfalco.RespostNow.model.Student;
 import com.devfalco.RespostNow.respository.StudentRepository;
 
@@ -11,7 +12,8 @@ import com.devfalco.RespostNow.respository.StudentRepository;
 public class StudentService {
   @Autowired
   StudentRepository studentRepository;
-  public Student createStudent(StudentDTO data){
+
+  public Student createStudent(StudentDTO data) {
     Student newstudent = new Student();
     newstudent.setEmail(data.email());
     if (data.confirmPassword() == data.password()) {
@@ -24,20 +26,48 @@ public class StudentService {
     return newstudent;
   }
 
-  public Student login(StudentDTO data){
+  public Student login(StudentDTO data) {
     Student student = studentRepository.findByEmail(data.email());
-   boolean verification = verification(student,data);
-   if(verification == true){
+    if (student == null) {
+      throw new RuntimeException("Usuario Inexistente");
+    }
+    if (!student.getEmail().equals(data.email()) || !student.getPassword().equals(data.password())) {
+      throw new RuntimeException("Email e Senha invalidas");
+    }
+    if (!student.getStatus().equals(STATUS.LOGADO)) {
+      throw new RuntimeException("Usuario ja esta Logado");
+    }
+    
+    student.setStatus(STATUS.LOGADO);
+    studentRepository.save(student);
     return student;
-   } else {
-    return null;
-   }
   }
 
-  boolean verification(Student student,  StudentDTO data){
-    if(student.getEmail() == data.email() && student.getPassword() == data.password()){
-        return true;
+  public Student logout(StudentDTO data) {
+    Student student = studentRepository.findByEmail(data.email());
+
+    if (student == null) {
+      throw new RuntimeException("Usuario Inexistente");
     }
-    return false;
+    if (!student.getEmail().equals(data.email()) || !student.getPassword().equals(data.password())) {
+      throw new RuntimeException("Email e Senha invalidas");
+    }
+    if (!student.getStatus().equals(STATUS.LOGADO)) {
+      throw new RuntimeException("Usuario ja esta Logado");
+    }
+
+    student.setStatus(STATUS.LOGOUT);
+    studentRepository.save(student);
+    return student;
+    
+  }
+
+  Student deleteUser(StudentDTO data) {
+    Student student = studentRepository.findByEmail(data.email());
+
+    studentRepository.delete(student);
+
+    return student;
+
   }
 }

@@ -29,8 +29,8 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<Student> login(@RequestBody StudentDTO dStudentDTO){
-      Student newstudent = studentService.login(dStudentDTO);
-      return ResponseEntity.ok(newstudent);
+      Student login = studentService.login(dStudentDTO);
+      return ResponseEntity.ok(login);
     }
   
 }
